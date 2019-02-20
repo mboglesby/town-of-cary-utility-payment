@@ -104,6 +104,7 @@ try :
 except Exception as e :
     print("Error starting virtual display (see 'Message' below)... Perhaps Xvfb is not installed?")
     print("Note: if you are running on ubuntu, you can install this with apt.")
+    print(str(e).strip())
     sys.exit(0)
 
 # Instantiate Firefox driver
