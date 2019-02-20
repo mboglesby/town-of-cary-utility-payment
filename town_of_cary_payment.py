@@ -101,8 +101,8 @@ print("Starting virtual display...")
 try :
     display = Display(visible=0, size=(800, 600))
     display.start()
-except :
-    print("Error starting virtual display... Perhaps Xvfb is not installed?")
+except Exception as e :
+    print("Error starting virtual display (see 'Message' below)... Perhaps Xvfb is not installed?")
     print("Note: if you are running on ubuntu, you can install this with apt.")
     sys.exit(0)
 
@@ -148,7 +148,8 @@ try :
     driver.find_element_by_link_text("Pay $" + amount).click()
     time.sleep(5)
 except Exception as e :
-    print("Error encountered (see below)... Closing webdriver and stopping virtual display...")
+    print("Error encountered (see 'Message' below)...")
+    print("Closing webdriver and stopping virtual display...")
     driver.close()
     driver.quit()
     display.stop()
