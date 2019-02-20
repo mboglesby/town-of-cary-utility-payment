@@ -113,7 +113,9 @@ try :
     options.headless = True
     driver = webdriver.Firefox(options=options)
 except Exception as e :
-    print("Error encountered (see below)... Stopping virtual display...")
+    print("Error instantiating Firefox selenium webdriver (see 'Message' below)... Perhaps geckodriver is not installed?")
+    print("Note: you can find geckodriver here: https://github.com/mozilla/geckodriver")
+    print("Stopping virtual display...")
     display.stop()
     print(str(e).strip())
     sys.exit(0)
