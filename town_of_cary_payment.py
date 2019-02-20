@@ -31,6 +31,9 @@ USAGE:          python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c 
 
 EXAMPLE USAGE:  python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu
 
+DEPENDENCIES:   Python3 Packages:   selenium, pyvirtualdisplay
+                Applications:       Xvfb (X virtual framebuffer, used by pyvirtualdisplay)
+
 NOTES:          
 
 **<payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary 
