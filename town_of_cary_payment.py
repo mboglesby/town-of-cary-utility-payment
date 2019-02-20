@@ -1,11 +1,21 @@
 #!/usr/bin/python3
 
 # Imports
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-from selenium.common import exceptions
-from pyvirtualdisplay import Display
 import sys, time, getopt
+try :
+    from selenium import webdriver
+    from selenium.webdriver.firefox.options import Options
+    from selenium.common import exceptions
+except :
+    print("Error importing selenium... Perhaps the selenium python3 package is not installed?")
+    print("Note: You can install this package with pip3.")
+    sys.exit(0)
+try :
+    from pyvirtualdisplay import Display
+except :
+    print("Error importing pyvirtualdisplay... Perhaps the pyvirtualdisplay python3 package is not installed?")
+    print("Note: You can install this package with pip3.")
+    sys.exit(0)
 
 # Import login details from user defined file (stored in same directory as this script)
 from town_of_cary_login import townOfCaryLogin
@@ -83,8 +93,13 @@ print("Preparing to issue a $" + amount + " payment to the Town of Cary using pa
 
 # Instantiate virtual display
 print("Starting virtual display...")
-display = Display(visible=0, size=(800, 600))
-display.start()
+try :
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+except :
+    print("Error starting virtual display... Perhaps Xvfb is not installed?")
+    print("Note: if you are running on ubuntu, you can install this with apt.")
+    sys.exit(0)
 
 # Instantiate Firefox driver
 try :
