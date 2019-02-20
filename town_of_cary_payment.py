@@ -18,7 +18,11 @@ except :
     sys.exit(0)
 
 # Import login details from user defined file (stored in same directory as this script)
-from town_of_cary_login import townOfCaryLogin
+try :
+    from town_of_cary_login import townOfCaryLogin
+except :
+    print("Error importing town_of_cary_login... Ensure that town_of_cary_login.py is located in the same directory as this script.")
+    sys.exit(0)
 
 # Define variables
 amount = ''
@@ -46,15 +50,16 @@ DEPENDENCIES:   Python3 Packages:   selenium, pyvirtualdisplay
 
 NOTES:          
 
-**<payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary 
-    matches a payment card to the corresponding radio button label on the Town of Cary's payment site.
+* <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary  matches a payment card 'nickname' (defined by you; can be anything) to the corresponding radio button label on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code.
 
-**Current contents of cardRadioButtonLabels dictionary (for reference):
+* Current contents of cardRadioButtonLabels dictionary (for reference):
     """ + str(cardRadioButtonLabels) + """
 
-**town_of_cary_login.py must be located in the same directory as town_of_cary_payment.py. Username and
-    password must be filled in in town_of_cary_login.py. See town_of_cary_login.py for details.
+* town_of_cary_login.py must be located in the same directory as town_of_cary_payment.py. Username and password must be filled in in town_of_cary_login.py. See town_of_cary_login.py for details.
 """
+hintsText = """\nHints:
+* Ensure that town_of_cary_login.py contains your login details.")
+* Ensure that for each key/value pair in cardRadioButtonLabels, the key is populated with a card 'nickname' (defined by you; can be anything), and the value is populated with the radio button label for the radio button corresponding to that specific card on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code."""
 
 # Get command line arguments
 try :
@@ -146,6 +151,7 @@ except Exception as e :
     driver.quit()
     display.stop()
     print(str(e).strip())
+    print(hintsText)
     sys.exit(0)
 
 # Close virtual display and Firefox

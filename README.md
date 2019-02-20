@@ -3,7 +3,6 @@ Personal automation scripts/programs.
 
 
 ### town_of_cary_payment.py
-
 DESCRIPTION:    Issues a payment to my Town of Cary (NC) utility bill.
 
 USAGE:          `python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c <payment_card>` or
@@ -18,10 +17,8 @@ DEPENDENCIES:
   * Note: If you are running ubuntu, you can install this via apt.
 
 NOTES:          
-* <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary 
-    matches a payment card to the corresponding radio button label on the Town of Cary's payment site.
-* 'town_of_cary_login.py' must be located in the same directory as 'town_of_cary_payment.py'. Username and
-    password must be filled in in 'town_of_cary_login.py'. See 'town_of_cary_login.py' for details.
+* <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary matches a payment card 'nickname' (defined by you; can be anything) to the corresponding radio button label on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code.
+* 'town_of_cary_login.py' must be located in the same directory as 'town_of_cary_payment.py'. Username and password must be filled in in 'town_of_cary_login.py'. See 'town_of_cary_login.py' for details.
 
 
 ### town_of_cary_login.py
