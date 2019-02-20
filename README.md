@@ -13,8 +13,9 @@ EXAMPLE USAGE:  `python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu`
 DEPENDENCIES:   
 * Python3 Packages:   selenium, pyvirtualdisplay
   * Note: You can install these via pip3.
-* Applications:       Xvfb (X virtual framebuffer, used by pyvirtualdisplay)
-  * Note: If you are running ubuntu, you can install this via apt.
+* Applications:       Xvfb (X virtual framebuffer, used by pyvirtualdisplay), Mozilla geckodriver
+  * Note: If you are running ubuntu, you can install Xvfb via apt.
+  * Note: geckodriver can be installed from here: https://github.com/mozilla/geckodriver/releases
 
 NOTES:          
 * <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary matches a payment card 'nickname' (defined by you; can be anything) to the corresponding radio button label on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code.
