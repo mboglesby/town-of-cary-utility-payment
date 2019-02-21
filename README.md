@@ -1,6 +1,20 @@
 # personal-automation
 Personal automation scripts/programs.
 
+### Dockerfile-town_of_cary_payment
+This Dockerfile can be used to build a docker image containing the town_of_cary_payment.py script and all dependencies. This eliminates the need to install the dependencies within your local environment.
+
+To build the docker image, run:
+`docker build -t town_of_cary_payment -f Dockerfile-town_of_cary_payment .`
+* Note: 'Dockerfile-town_of_cary_payment', 'town_of_cary_payment.py', and 'town_of_cary_login.py' must all be located in the same directory, and the build command must be run from within that directory.
+
+Once the docker image is built, you can use it to to execute the town_of_cary_payment.py script as follows:
+`docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>` or
+`docker run -it --rm town_of_cary_payment --amount <payment_amount_in_usd> --card <payment_card>`
+
+..for example:
+`docker run -it --rm town_of_cary_payment --amount 10.00 --card mo_ofcu`
+
 
 ### town_of_cary_payment.py
 DESCRIPTION:    Issues a payment to my Town of Cary (NC) utility bill.
@@ -13,8 +27,8 @@ EXAMPLE USAGE:  `python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu`
 DEPENDENCIES:   
 * Python3 Packages:   selenium, pyvirtualdisplay
   * Note: You can install these via pip3.
-* Applications:       Xvfb (X virtual framebuffer, used by pyvirtualdisplay), Mozilla geckodriver
-  * Note: If you are running ubuntu, you can install Xvfb via apt.
+* Applications:       Firefox, Mozilla Geckodriver, Xvfb (X virtual framebuffer, used by pyvirtualdisplay)
+  * Note: If you are running ubuntu, you can install Firefox and Xvfb via apt.
   * Note: geckodriver can be installed from here: https://github.com/mozilla/geckodriver/releases
 
 NOTES:          

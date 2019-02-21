@@ -1,37 +1,13 @@
 #!/usr/bin/python3
 
-# Imports
-import sys, time, getopt
-try :
-    from selenium import webdriver
-    from selenium.webdriver.firefox.options import Options
-    from selenium.common import exceptions
-except :
-    print("Error importing selenium... Perhaps the selenium python3 package is not installed?")
-    print("Note: You can install this package with pip3.")
-    sys.exit(0)
-try :
-    from pyvirtualdisplay import Display
-except :
-    print("Error importing pyvirtualdisplay... Perhaps the pyvirtualdisplay python3 package is not installed?")
-    print("Note: You can install this package with pip3.")
-    sys.exit(0)
-
-# Import login details from user defined file (stored in same directory as this script)
-try :
-    from town_of_cary_login import townOfCaryLogin
-except :
-    print("Error importing town_of_cary_login... Ensure that town_of_cary_login.py is located in the same directory as this script.")
-    sys.exit(0)
-
-# Define variables
-amount = ''
-card = ''
+# Set user-defined variables (see README.md or helpText)
 cardRadioButtonLabels = {
         "mo_ofcu": "7203136",
         "mo_lmcu": "6273078",
         "lh_lmcu": "6273080"
 }
+
+# Set help text
 helpText = """
 town_of_cary_payment.py - v0.1
 
@@ -42,11 +18,13 @@ DESCRIPTION:    Issues a payment to my Town of Cary (NC) utility bill.
 USAGE:          python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c <payment_card>
                     -- or --
                 python3 ./town_of_cary_payment.py --amount <payment_amount_in_usd> --card <payment_card>
+                    -- or, if executed using docker image built from Dockerfile-town_of_cary_payment --
+                docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>
 
 EXAMPLE USAGE:  python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu
 
 DEPENDENCIES:   Python3 Packages:   selenium, pyvirtualdisplay
-                Applications:       Xvfb (X virtual framebuffer, used by pyvirtualdisplay), Mozilla geckodriver
+                Applications:       Firefox, Mozilla Geckodriver, Xvfb (X virtual framebuffer, used by pyvirtualdisplay)
 
 NOTES:          
 
@@ -60,6 +38,13 @@ NOTES:
 hintsText = """\nHints:
 * Ensure that town_of_cary_login.py contains your login details.")
 * Ensure that for each key/value pair in cardRadioButtonLabels, the key is populated with a card 'nickname' (defined by you; can be anything), and the value is populated with the radio button label for the radio button corresponding to that specific card on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code."""
+
+# Initial imports
+import sys, time, getopt
+
+# Define variables
+amount = ''
+card = ''
 
 # Get command line arguments
 try :
@@ -78,6 +63,13 @@ for opt, arg in opts :
     elif opt in ("-c", "--card") :
         card = arg
 
+# Import login details from user defined file (stored in same directory as this script)
+try :
+    from town_of_cary_login import townOfCaryLogin
+except :
+    print("Error importing town_of_cary_login... Ensure that town_of_cary_login.py is located in the same directory as this script.")
+    sys.exit(0)
+
 # Check command line arguments for validity
 invalidArg = False
 if card not in cardRadioButtonLabels :
@@ -91,6 +83,22 @@ except :
     print("Invalid payment amount...")
     invalidArg = True
 if invalidArg :
+    sys.exit(0)
+
+# Import selenium and pyvirtualdisplay
+try :
+    from selenium import webdriver
+    from selenium.webdriver.firefox.options import Options
+    from selenium.common import exceptions
+except :
+    print("Error importing selenium... Perhaps the selenium python3 package is not installed?")
+    print("Note: You can install this package with pip3.")
+    sys.exit(0)
+try :
+    from pyvirtualdisplay import Display
+except :
+    print("Error importing pyvirtualdisplay... Perhaps the pyvirtualdisplay python3 package is not installed?")
+    print("Note: You can install this package with pip3.")
     sys.exit(0)
 
 # Print command line arguments
