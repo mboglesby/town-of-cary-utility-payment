@@ -1,4 +1,4 @@
-# Use the official debian 9 mage
+# Use the official ubuntu bionic image
 FROM ubuntu:bionic
 
 # Set maintainer email address
