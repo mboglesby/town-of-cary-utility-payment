@@ -37,4 +37,4 @@ NOTES:
 
 
 ### town_of_cary_login.py
-Town of Cary login details used by 'town_of_cary_payment.py'.
+This file contains Town of Cary login details in python dictionary format.  It is used by 'town_of_cary_payment.py'.
