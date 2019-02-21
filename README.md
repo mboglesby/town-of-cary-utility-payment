@@ -5,11 +5,16 @@ Personal automation scripts/programs.
 This Dockerfile can be used to build a docker image containing the town_of_cary_payment.py script and all dependencies. This eliminates the need to install the dependencies within your local environment.
 
 To build the docker image, run:
+
 `docker build -t town_of_cary_payment -f Dockerfile-town_of_cary_payment .`
 * Note: 'Dockerfile-town_of_cary_payment', 'town_of_cary_payment.py', and 'town_of_cary_login.py' must all be located in the same directory, and the build command must be run from within that directory.
 
 Once the docker image is built, you can use it to to execute the town_of_cary_payment.py script as follows:
-`docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>` or
+
+`docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>` 
+
+-- or --
+
 `docker run -it --rm town_of_cary_payment --amount <payment_amount_in_usd> --card <payment_card>`
 
 ..for example:
@@ -19,10 +24,16 @@ Once the docker image is built, you can use it to to execute the town_of_cary_pa
 ### town_of_cary_payment.py
 DESCRIPTION:    Issues a payment to my Town of Cary (NC) utility bill.
 
-USAGE:          `python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c <payment_card>` or
-                `python3 ./town_of_cary_payment.py --amount <payment_amount_in_usd> --card <payment_card>`
+USAGE:          
 
-EXAMPLE USAGE:  `python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu`
+`python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c <payment_card>`
+
+-- or --
+
+`python3 ./town_of_cary_payment.py --amount <payment_amount_in_usd> --card <payment_card>`
+
+..for example:
+`python3 ./town_of_cary_payment.py -a 10.00 -c mo_ofcu`
 
 DEPENDENCIES:   
 * Python3 Packages:   selenium, pyvirtualdisplay
