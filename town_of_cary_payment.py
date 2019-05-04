@@ -4,7 +4,8 @@
 cardRadioButtonLabels = {
         "mo_ofcu": "7203136",
         "mo_lmcu": "6273078",
-        "lh_lmcu": "6273080"
+        "lh_lmcu": "6273080",
+	"mo_pnc": "8451170"
 }
 
 # Set help text
