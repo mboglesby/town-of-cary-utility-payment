@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: tocpay-1-moofcu
+  namespace: personal-automation
+spec:
+  schedule: "10 21 1,4,7,10,13,16,19,22,25,27 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: tocpay
+            image: town_of_cary_payment:19.05
+            command:
+              - python3
+              - "/root/tocpay/town_of_cary_payment.py"
+              - "--amount"
+              - "1.00"
+              - "--card"
+              - "mo_ofcu"
+            imagePullPolicy: Never
+          restartPolicy: Never
