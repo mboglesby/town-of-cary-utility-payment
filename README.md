@@ -6,7 +6,7 @@ This Dockerfile can be used to build a docker image containing the town_of_cary_
 
 To build the docker image, run:
 
-`docker build -t town_of_cary_payment -f Dockerfile-town_of_cary_payment .`
+`docker build -t town_of_cary_payment:19.05 -f Dockerfile-town_of_cary_payment .`
 * Note: 'Dockerfile-town_of_cary_payment', 'town_of_cary_payment.py', and 'town_of_cary_login.py' must all be located in the same directory, and the build command must be run from within that directory.
 
 Once the docker image is built, you can use it to to execute the town_of_cary_payment.py script as follows:
