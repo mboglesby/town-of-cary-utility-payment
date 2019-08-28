@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: tocpay
+  name: tocpay-1-lhofcu
   namespace: personal-automation
 spec:
   template:
@@ -15,6 +15,6 @@ spec:
           - "--amount"
           - "1.00"
           - "--card"
-          - "mo_ofcu"
+          - "lh_ofcu"
         imagePullPolicy: Never
       restartPolicy: Never
