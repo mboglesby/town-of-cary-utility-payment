@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: tocpay-1-moofcu
+  name: tocpay-1-lhofcu
   namespace: personal-automation
 spec:
   schedule: "10 21 1,4,7,10,13,16,19,22,25,27 * *"
