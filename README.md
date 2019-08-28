@@ -11,14 +11,14 @@ To build the docker image, run:
 
 Once the docker image is built, you can use it to to execute the town_of_cary_payment.py script as follows:
 
-`docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>` 
+`docker run -it --rm town_of_cary_payment:19.05 -a <payment_amount_in_usd> -c <payment_card>` 
 
 -- or --
 
-`docker run -it --rm town_of_cary_payment --amount <payment_amount_in_usd> --card <payment_card>`
+`docker run -it --rm town_of_cary_payment:19.05 --amount <payment_amount_in_usd> --card <payment_card>`
 
 ..for example:
-`docker run -it --rm town_of_cary_payment --amount 10.00 --card mo_ofcu`
+`docker run -it --rm town_of_cary_payment:19.05 --amount 10.00 --card mo_ofcu`
 
 
 ### town_of_cary_payment.py
