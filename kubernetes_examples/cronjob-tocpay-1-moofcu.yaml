@@ -4,7 +4,7 @@ metadata:
   name: tocpay-1-moofcu
   namespace: personal-automation
 spec:
-  schedule: "10 21 1,4,7,10,13,16,19,22,25,27 * *"
+  schedule: "05 21 1,4,7,10,13,16,19,22,25,27 * *"
   jobTemplate:
     spec:
       template:
