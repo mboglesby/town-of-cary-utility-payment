@@ -4,7 +4,7 @@ metadata:
   name: tocpay-1-lhlmcu
   namespace: personal-automation
 spec:
-  schedule: "15 21 1,3,5,7,10,13,16,19,22,25,27 * *"
+  schedule: "05 17 1,3,5,7,10,13,16,19,22,25,27 * *"
   jobTemplate:
     spec:
       template:
