@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: tocpay-2-mocfcu
+  namespace: personal-automation
+spec:
+  schedule: "05 17 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: tocpay
+            image: town_of_cary_payment:19.05
+            command:
+              - python3
+              - "/root/tocpay/town_of_cary_payment.py"
+              - "--amount"
+              - "2.00"
+              - "--card"
+              - "mo_cfcu"
+            imagePullPolicy: Never
+          restartPolicy: OnFailure
