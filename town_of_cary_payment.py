@@ -2,6 +2,7 @@
 
 # Set user-defined variables (see README.md or helpText)
 cardRadioButtonLabels = {
+        "mo_cfcu": "10955444",
         "mo_ofcu": "7203136",
         "lh_ofcu": "9463946",
         "mo_lmcu": "6273078",
