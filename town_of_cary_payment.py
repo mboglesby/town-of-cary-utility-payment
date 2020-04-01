@@ -56,7 +56,7 @@ cardLabel = ''
 
 # Get command line arguments
 try :
-    opts, args = getopt.getopt(sys.argv[1:], "ha:c:", ["help", "amount=", "card="])
+    opts, args = getopt.getopt(sys.argv[1:], "ha:cl", ["help", "amount=", "card", "card-label"])
 except :
     print(helpText)
     sys.exit(0)
