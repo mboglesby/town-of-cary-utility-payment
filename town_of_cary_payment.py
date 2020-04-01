@@ -12,7 +12,7 @@ cardRadioButtonLabels = {
 
 # Set help text
 helpText = """
-town_of_cary_payment.py - v0.1
+town_of_cary_payment.py - v20.04
 
 Created by Michael Oglesby for personal use.
 
