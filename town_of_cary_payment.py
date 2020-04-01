@@ -60,7 +60,8 @@ try :
 except :
     print(helpText)
     sys.exit(0)
-if ("-c" not in opts and "-l" not in opts) and ("--card" not in opts and "--card-label" not in opts) :
+if (("-c" not in opts) and ("-l" not in opts)) and (("--card" not in opts) and ("--card-label" not in opts)) :
+    print opts
     print(helpText)
     sys.exit(0)
 
