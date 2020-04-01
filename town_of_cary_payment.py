@@ -82,7 +82,7 @@ except :
 
 # Check command line arguments for validity
 invalidArg = False
-if card 
+if card :
     if card not in cardRadioButtonLabels :
         print("Invalid payment card...")
         invalidArg = True
