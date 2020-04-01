@@ -50,18 +50,14 @@ hintsText = """\nHints:
 import sys, time, getopt
 
 # Define variables
-amount = ''
+amount = None
 card = None
-cardLabel = ''
+cardLabel = None
 
 # Get command line arguments
 try :
-    opts, args = getopt.getopt(sys.argv[1:], "ha:cl", ["help", "amount=", "card", "card-label"])
+    opts, args = getopt.getopt(sys.argv[1:], "ha:c:l:", ["help", "amount=", "card=", "card-label="])
 except :
-    print(helpText)
-    sys.exit(0)
-if (("-c" not in opts) and ("-l" not in opts)) and (("--card" not in opts) and ("--card-label" not in opts)) :
-    print(opts)
     print(helpText)
     sys.exit(0)
 
@@ -100,6 +96,9 @@ except :
     print("Invalid payment amount...")
     invalidArg = True
 if invalidArg :
+    sys.exit(0)
+if not cardLabel :
+    print(helpText)
     sys.exit(0)
 
 # Import selenium and pyvirtualdisplay
