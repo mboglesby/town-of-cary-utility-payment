@@ -6,19 +6,19 @@ This Dockerfile can be used to build a docker image containing the town_of_cary_
 
 To build the docker image, run:
 
-`docker build -t town_of_cary_payment:19.05 -f Dockerfile-town_of_cary_payment .`
+`docker build -t town_of_cary_payment:20.04 -f Dockerfile-town_of_cary_payment .`
 * Note: 'Dockerfile-town_of_cary_payment', 'town_of_cary_payment.py', and 'town_of_cary_login.py' must all be located in the same directory, and the build command must be run from within that directory.
 
 Once the docker image is built, you can use it to to execute the town_of_cary_payment.py script as follows:
 
-`docker run -it --rm town_of_cary_payment:19.05 -a <payment_amount_in_usd> -c <payment_card>` 
+`docker run -it --rm town_of_cary_payment:20.04 -a <payment_amount_in_usd> -c <payment_card>` 
 
 -- or --
 
-`docker run -it --rm town_of_cary_payment:19.05 --amount <payment_amount_in_usd> --card <payment_card>`
+`docker run -it --rm town_of_cary_payment:20.04 -a <payment_amount_in_usd> -l <payment_card_radio_button_label>
 
 ..for example:
-`docker run -it --rm town_of_cary_payment:19.05 --amount 10.00 --card mo_ofcu`
+`docker run -it --rm town_of_cary_payment:20.04 -a 10.00 -c mo_ofcu`
 
 
 ### town_of_cary_payment.py
