@@ -21,6 +21,10 @@ DESCRIPTION:    Issues a payment to my Town of Cary (NC) utility bill.
 USAGE:          python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -c <payment_card>
                     -- or --
                 python3 ./town_of_cary_payment.py --amount <payment_amount_in_usd> --card <payment_card>
+                    -- or --
+                python3 ./town_of_cary_payment.py --amount <payment_amount_in_usd> --card-label <payment_card_radio_button_label>
+                    -- or --
+                python3 ./town_of_cary_payment.py -a <payment_amount_in_usd> -l <payment_card_radio_button_label>
                     -- or, if executed using docker image built from Dockerfile-town_of_cary_payment --
                 docker run -it --rm town_of_cary_payment -a <payment_amount_in_usd> -c <payment_card>
 
@@ -31,7 +35,7 @@ DEPENDENCIES:   Python3 Packages:   selenium, pyvirtualdisplay
 
 NOTES:          
 
-* <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary  matches a payment card 'nickname' (defined by you; can be anything) to the corresponding radio button label on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code.
+* If using the '-c'/'--card' option, <payment_card> must be a key in the cardRadioButtonLabels dictionary (stored in this script). This dictionary  matches a payment card 'nickname' (defined by you; can be anything) to the corresponding radio button label on the Town of Cary's payment site. You will have to get the radio button label from the payment site's html code.
 
 * Current contents of cardRadioButtonLabels dictionary (for reference):
     """ + str(cardRadioButtonLabels) + """
@@ -47,7 +51,8 @@ import sys, time, getopt
 
 # Define variables
 amount = ''
-card = ''
+card = None
+cardLabel = ''
 
 # Get command line arguments
 try :
@@ -65,6 +70,8 @@ for opt, arg in opts :
         amount = arg
     elif opt in ("-c", "--card") :
         card = arg
+    elif opt in ("-l", "--card-label") :
+        cardLabel = arg
 
 # Import login details from user defined file (stored in same directory as this script)
 try :
@@ -75,9 +82,12 @@ except :
 
 # Check command line arguments for validity
 invalidArg = False
-if card not in cardRadioButtonLabels :
-    print("Invalid payment card...")
-    invalidArg = True
+if card 
+    if card not in cardRadioButtonLabels :
+        print("Invalid payment card...")
+        invalidArg = True
+    else :
+        cardLabel = cardRadioButtonLabels[card] 
 try :
     if float(amount) < 1.0 :
         print("Payment amount must be greater than $1...")
@@ -148,7 +158,7 @@ try :
     driver.find_element_by_id("header.paymentAmount").clear()
     driver.find_element_by_id("header.paymentAmount").send_keys(amount)
     driver.find_element_by_xpath("//*[@id=\"carousel\"]/ul/li[1]").click()
-    driver.find_element_by_xpath("//*[@id=\"label-pm-radio-pm-3-" + cardRadioButtonLabels[card] + "\"]/span").click()
+    driver.find_element_by_xpath("//*[@id=\"label-pm-radio-pm-3-" + cardLabel + "\"]/span").click()
     driver.find_element_by_link_text("Continue").click()
     time.sleep(5)
     try :
