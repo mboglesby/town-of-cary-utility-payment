@@ -60,6 +60,9 @@ try :
 except :
     print(helpText)
     sys.exit(0)
+if ("-c" not in opts and "-l" not in opts) or ("--card" not in opts and "--card-label" not in opts) :
+	print(helpText)
+    sys.exit(0)
 
 # Parse command line arguments
 for opt, arg in opts :
@@ -115,7 +118,10 @@ except :
     sys.exit(0)
 
 # Print command line arguments
-print("Preparing to issue a $" + amount + " payment to the Town of Cary using payment card '" + card + "'...")
+if card :
+    print("Preparing to issue a $" + amount + " payment to the Town of Cary using payment card '" + card + "'...")
+else :
+    print("Preparing to issue a $" + amount + " payment to the Town of Cary using payment card with label '" + cardLabel + "'...")
 
 # Instantiate virtual display
 print("Starting virtual display...")
