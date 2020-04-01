@@ -61,7 +61,7 @@ except :
     print(helpText)
     sys.exit(0)
 if ("-c" not in opts and "-l" not in opts) or ("--card" not in opts and "--card-label" not in opts) :
-	print(helpText)
+    print(helpText)
     sys.exit(0)
 
 # Parse command line arguments
