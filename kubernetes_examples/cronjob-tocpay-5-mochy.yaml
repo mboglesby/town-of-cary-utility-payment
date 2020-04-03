@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: tocpay-5-mochy
+  namespace: personal-automation
+spec:
+  schedule: "05 16 5 1,4,7,10 *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: tocpay
+            image: town_of_cary_payment:20.04
+            command:
+              - python3
+              - "/root/tocpay/town_of_cary_payment.py"
+              - "--amount"
+              - "5.00"
+              - "--card-label"
+              - "7614786"
+            imagePullPolicy: Never
+          restartPolicy: OnFailure
