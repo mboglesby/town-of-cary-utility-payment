@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tocpay-5-mocdc
+  namespace: personal-automation
+spec:
+  template:
+    spec:
+      containers:
+      - name: tocpay
+        image: town_of_cary_payment:20.04
+        command:
+          - python3
+          - "/root/tocpay/town_of_cary_payment.py"
+          - "--amount"
+          - "5.00"
+          - "--card-label"
+          - "11626906"
+        imagePullPolicy: Never
+      restartPolicy: OnFailure
