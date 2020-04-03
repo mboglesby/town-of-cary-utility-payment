@@ -126,7 +126,7 @@ else :
 # Instantiate virtual display
 print("Starting virtual display...")
 try :
-    display = Display(visible=0, size=(1440, 900))
+    display = Display(visible=0, size=(3840, 2160))
     display.start()
 except Exception as e :
     print("Error starting virtual display (see 'Message' below)... Perhaps Xvfb is not installed?")
