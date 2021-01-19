@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tocpay-2-mocfcu
+  namespace: personal-automation
+spec:
+  completions: 6
+  template:
+    spec:
+      containers:
+      - name: tocpay
+        image: town_of_cary_payment:latest
+        command:
+          - python3
+          - "/root/tocpay/town_of_cary_payment.py"
+          - "--amount"
+          - "2.00"
+          - "--card"
+          - "mo_cfcu"
+        imagePullPolicy: Never
+      restartPolicy: OnFailure
