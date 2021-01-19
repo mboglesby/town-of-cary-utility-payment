@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: tocpay
-        image: town_of_cary_payment:20.04
+        image: town_of_cary_payment:latest
         command:
           - python3
           - "/root/tocpay/town_of_cary_payment.py"
