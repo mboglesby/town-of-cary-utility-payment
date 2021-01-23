@@ -52,7 +52,7 @@ try :
     opts, args = getopt.getopt(sys.argv[1:], "ha:c:l:", ["help", "amount=", "card=", "card-label="])
 except :
     print(helpText)
-    sys.exit(0)
+    sys.exit(1)
 
 # Parse command line arguments
 for opt, arg in opts :
@@ -71,7 +71,7 @@ try :
     from town_of_cary_login import townOfCaryLogin
 except :
     print("Error importing town_of_cary_login... Ensure that town_of_cary_login.py is located in the same directory as this script.")
-    sys.exit(0)
+    sys.exit(1)
 
 # Check command line arguments for validity
 invalidArg = False
@@ -89,10 +89,10 @@ except :
     print("Invalid payment amount...")
     invalidArg = True
 if invalidArg :
-    sys.exit(0)
+    sys.exit(1)
 if not cardLabel :
     print(helpText)
-    sys.exit(0)
+    sys.exit(1)
 
 # Import selenium and pyvirtualdisplay
 try :
@@ -103,7 +103,7 @@ try :
 except :
     print("Error importing selenium... Perhaps the selenium python3 package is not installed?")
     print("Note: You can install this package with pip3.")
-    sys.exit(0)
+    sys.exit(1)
 
 # Print command line arguments
 if card :
@@ -128,7 +128,7 @@ except Exception as e :
     print("Error instantiating Chrome selenium webdriver (see 'Message' below)... Perhaps geckodriver is not installed?")
     print("Note: you can find geckodriver here: https://github.com/mozilla/geckodriver")
     print(str(e).strip())
-    sys.exit(0)
+    sys.exit(1)
 
 # Execute payment
 try :
@@ -170,7 +170,7 @@ except Exception as e :
     driver.quit()
     print(str(e).strip())
     print(hintsText)
-    sys.exit(0)
+    sys.exit(1)
 
 # Close virtual display and Chrome
 print("Closing webdriver and stoping virtualdisplay...")
